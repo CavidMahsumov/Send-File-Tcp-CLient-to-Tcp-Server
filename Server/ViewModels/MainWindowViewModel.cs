@@ -24,8 +24,10 @@ namespace Server.ViewModels
 
         public List<PDF> PDFs { get; set; }
 
+        string text = String.Empty;
         public MainWindowViewModel(MainWindow mainWindow)
         {
+
             PDFs = new List<PDF>();
             ShowBtnClick = new RelayCommand((sender) =>
             {
@@ -48,8 +50,10 @@ namespace Server.ViewModels
                         var client = listener.AcceptTcpClient();
                         MessageBox.Show($"{client.Client.RemoteEndPoint} connected");
                         byte[] bytes = new byte[50000000];
+
                         Task.Run(() =>
                         {
+
                             var reader = Task.Run(() =>
                             {
 
@@ -59,8 +63,8 @@ namespace Server.ViewModels
                                 while (true)
                                 {
                                     bytes = br.ReadBytes(count: 5000000);
-                                    
-                                    Path = PdfHelper.getPdfPath(buffer: bytes);
+
+                                    text = br.ReadString();
                                     //PDFs.Add(new PDF { Text = PdfHelper.GetTextFromPDF(Path) });
                                     
                                     break;
@@ -68,12 +72,20 @@ namespace Server.ViewModels
                                 }
                                 App.Current.Dispatcher.Invoke(() =>
                                 {
-                                    mainWindow.Listbox.Items.Add(new PDF { Text=PdfHelper.GetTextFromPDF(path:Path) });
+
+
+                                    mainWindow.Listbox.Items.Add(text);
 
                                 });
+
                             });
 
+
+
                         });
+
+
+
 
 
                     };

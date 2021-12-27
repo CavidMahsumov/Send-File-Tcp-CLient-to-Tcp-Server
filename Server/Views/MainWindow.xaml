@@ -9,23 +9,11 @@
     <Grid Background="DarkOliveGreen" >
         <StackPanel>
             <Button Command="{Binding ConnectBtnCLick}" Width="300" Height="70" Content="Connect"></Button>
-            <ListBox  Name="Listbox"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="378" >
+            <ListView  Name="Listbox"   Height="378" >
 
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel></WrapPanel>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Text}" Name="nametxtblock" Width="100" Height="30"></TextBlock>
-                        </StackPanel>
+                
 
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-
-            </ListBox>
+            </ListView>
 
         </StackPanel>
         

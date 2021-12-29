@@ -27,25 +27,28 @@ namespace SendFileClientToServerWithTCP.Additional
             MemoryStream ms = new MemoryStream();
             bf.Serialize(ms, buffer);
             buffer = ms.ToArray();
-            System.IO.File.WriteAllBytes(@"C:\Users\mehsu\source\repos\SendFileClientToServerWithTCP\Server\bin\Debug\tes.pdf", buffer);
+            string path = @"C:\Users\mehsu\source\repos\SendFileClientToServerWithTCP\Server\bin\Debug\test2.pdf";
+            File.WriteAllBytes(path,buffer);
 
-            string path = @"C:\Users\mehsu\source\repos\SendFileClientToServerWithTCP\Server\bin\Debug\tes.pdf";
+
             return path;
 
         }
 
         public static string GetTextFromPDF(string path)
         {
-            StringBuilder text = new StringBuilder();
-            using (PdfReader reader = new PdfReader(path))
+            string text;
+            PdfReader reader = new PdfReader(path);
+
+            using (StringWriter output = new StringWriter())
             {
                 for (int i = 1; i <= reader.NumberOfPages; i++)
-                {
-                    text.Append(PdfTextExtractor.GetTextFromPage(reader, i));
-                }
-            }
+                    output.WriteLine(PdfTextExtractor.GetTextFromPage(reader, i, new SimpleTextExtractionStrategy()));
 
-            return text.ToString();
+                reader.Close();
+                text = output.ToString();
+            }
+            return text;
         }
 
     }

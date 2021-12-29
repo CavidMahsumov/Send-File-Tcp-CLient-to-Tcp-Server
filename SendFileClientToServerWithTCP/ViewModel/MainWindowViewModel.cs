@@ -74,7 +74,7 @@ namespace SendFileClientToServerWithTCP.ViewModel
                     open.Multiselect = false;
                     open.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
                     open.ShowDialog();
-                    b = PdfHelper.getBytes(path: open.FileName);
+                    b = PdfHelper.getBytes(path:open.FileName);
                     //mainWindow.image1.Source = new BitmapImage(new Uri(open.FileName));
                 }
                 catch (Exception ex)

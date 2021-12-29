@@ -9,11 +9,19 @@
     <Grid Background="DarkOliveGreen" >
         <StackPanel>
             <Button Command="{Binding ConnectBtnCLick}" Width="300" Height="70" Content="Connect"></Button>
-            <ListView  Name="Listbox"   Height="378" >
+            <ListBox  Name="Listbox"   Height="378" >
 
-                
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="{Binding Text}"></TextBlock>
+                            <TextBlock Text="{Binding SenderName}"></TextBlock>
 
-            </ListView>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
 
         </StackPanel>
         

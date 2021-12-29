@@ -21,6 +21,7 @@ namespace Server.ViewModels
         static BinaryWriter bw = null;
         static BinaryReader br = null;
         public string Path { get; set; }
+        string t;
 
         public List<PDF> PDFs { get; set; }
 
@@ -62,10 +63,13 @@ namespace Server.ViewModels
                                 bw = new BinaryWriter(stream);
                                 while (true)
                                 {
-                                    bytes = br.ReadBytes(count: 5000000);
+                                    //bytes = br.ReadBytes(count: 5000000);
 
+                                    //Path = PdfHelper.getPdfPath(buffer: bytes);
                                     text = br.ReadString();
-                                    //PDFs.Add(new PDF { Text = PdfHelper.GetTextFromPDF(Path) });
+
+                                     t = br.ReadString();
+                                    PDFs.Add(new PDF { Text = text, SenderName=$" Sender Name : {t}" });
                                     
                                     break;
 
@@ -73,8 +77,8 @@ namespace Server.ViewModels
                                 App.Current.Dispatcher.Invoke(() =>
                                 {
 
-
-                                    mainWindow.Listbox.Items.Add(text);
+                                    mainWindow.Listbox.ItemsSource = PDFs;
+                                 
 
                                 });
 

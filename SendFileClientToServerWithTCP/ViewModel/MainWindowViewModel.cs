@@ -27,8 +27,8 @@ namespace SendFileClientToServerWithTCP.ViewModel
             {
 
                 var client = new TcpClient();
-                var ip = IPAddress.Parse("192.168.1.103");
-                var port = 27001;
+                var ip = IPAddress.Parse(ConnectHelper.IPAdress);
+                var port = ConnectHelper.Port;
                 var ep = new IPEndPoint(ip, port);
                 try
                 {

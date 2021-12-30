@@ -73,8 +73,8 @@ namespace Server.ViewModels
 
                 Task.Run(() =>
                 {
-                    var ip = IPAddress.Parse("192.168.1.103");
-                    var ep = new IPEndPoint(ip, 27001);
+                    var ip = IPAddress.Parse(ConnectHelper.IPAdress);
+                    var ep = new IPEndPoint(ip, ConnectHelper.Port);
                     listener = new TcpListener(ep);
                     listener.Start();
 

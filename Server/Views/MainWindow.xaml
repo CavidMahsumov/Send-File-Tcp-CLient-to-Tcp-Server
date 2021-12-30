@@ -8,7 +8,7 @@
         Title="MainWindow" Height="550" Width="850">
     <Grid Background="DarkOliveGreen" >
         <StackPanel>
-            <Button Command="{Binding ConnectBtnCLick}" Width="300" Height="70" Content="Connect"></Button>
+            <Button FontSize="20" Command="{Binding ConnectBtnCLick}" Width="300" Height="70" Content="Connect"></Button>
             <WrapPanel>
                 <ListBox BorderThickness="0" Width="420"  Name="Listbox" Grid.Column="1"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="378" SelectedItem="{Binding SelectedItemPdf}" >
 
@@ -51,7 +51,7 @@
                     </ListBox.ItemTemplate>
 
                 </ListBox>
-                <ListBox BorderThickness="0" SelectedItem="{Binding SelectedItemImg}" Width="420"  Name="ListboxImg" Grid.Column="1"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="378"  >
+                <ListBox BorderThickness="0" SelectedItem="{Binding SelectedItemImg}" Width="410"  Name="ListboxImg" Grid.Column="1"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="378"  >
 
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -95,7 +95,7 @@
 
             </WrapPanel>
         
-            <Button Command="{Binding OpenBtnCommand}" Name="openbtn" Width="300" Height="50">Open File</Button>
+            <Button FontSize="20" Command="{Binding OpenBtnCommand}" Name="openbtn" Width="300" Height="50">Open File</Button>
         </StackPanel>
         
     </Grid>

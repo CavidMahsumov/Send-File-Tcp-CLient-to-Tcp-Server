@@ -10,7 +10,7 @@
         <StackPanel Background="Aquamarine">
             <WrapPanel>
                 <Label Margin="90,0,70,0" HorizontalAlignment="Left" FontSize="24">Name :</Label>
-                <TextBox Name="NametxtBox" Width="290"></TextBox>
+                <TextBox FontFamily="Comic Sans MS" FontSize="18" Name="NametxtBox" Width="290"></TextBox>
 
 
             </WrapPanel>

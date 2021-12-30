@@ -6,15 +6,20 @@
         xmlns:local="clr-namespace:SendFileClientToServerWithTCP"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid  >
-        <StackPanel>
+    <Grid >
+        <StackPanel Background="Aquamarine">
             <WrapPanel>
-                <Button Command="{Binding ConnectBtn}" Content="Connect" FontSize="24" Width="250" Height="50"></Button>
-                <Button Content="DisConnect" FontSize="24" Width="250" Height="50"></Button>
+                <Label Margin="90,0,70,0" HorizontalAlignment="Left" FontSize="24">Name :</Label>
                 <TextBox Name="NametxtBox" Width="290"></TextBox>
-                <Button Command="{Binding SelectBtn}" Content="Select" FontSize="24" Width="250" Height="50"></Button>
+
+
+            </WrapPanel>
+            <WrapPanel>
+            <Button Margin="140,0,0,0" Command="{Binding ConnectBtn}" Content="Connect" FontSize="24" Width="250" Height="50"></Button>
+            <Button Command="{Binding SelectBtn}" Content="Select" FontSize="24" Width="250" Height="50"></Button>
+                
             </WrapPanel>
         </StackPanel>
-        
+
     </Grid>
 </Window>

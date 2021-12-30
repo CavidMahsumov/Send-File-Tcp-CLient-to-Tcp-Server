@@ -14,6 +14,8 @@ namespace SendFileClientToServerWithTCP.ViewModel
 {
     public class MainWindowViewModel
     {
+        public string Path1 { get; set; }
+
         public RelayCommand ConnectBtn { get; set; }
         public RelayCommand DisConnectBtn { get; set; }
         public RelayCommand SelectBtn { get; set; }
@@ -40,7 +42,18 @@ namespace SendFileClientToServerWithTCP.ViewModel
 
                                 var stream = client.GetStream();
                                 var bw = new BinaryWriter(stream);
-                                bw.Write(b);
+
+
+                                bw.Write(Path1);
+                                App.Current.Dispatcher.Invoke(() =>
+                                {
+
+                                    bw.Write(mainWindow.NametxtBox.Text);
+
+                                });
+
+
+                                break;
                             };
                         });
 
@@ -58,6 +71,7 @@ namespace SendFileClientToServerWithTCP.ViewModel
                 }
 
 
+
             });
             DisConnectBtn = new RelayCommand((sender) =>
             {
@@ -72,10 +86,24 @@ namespace SendFileClientToServerWithTCP.ViewModel
                     var open = new Microsoft.Win32.OpenFileDialog();
 
                     open.Multiselect = false;
-                    open.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                    open.Filter = "Pdf Files (*.txt)|*.pdf|Image Files|*.jpg;*.jpeg;*.png;";
                     open.ShowDialog();
-                    b = PdfHelper.getBytes(path:open.FileName);
+                    //Text = PdfHelper.ReadPdfFile(open.FileName);
+
+                    if (".pdf".Equals(Path.GetExtension(open.FileName), StringComparison.OrdinalIgnoreCase))
+                    {
+                        Path1 = open.FileName;
+
+
+                    }
+                    else
+                    {
+                        Path1 = open.FileName;
+
+                    }
+
                     //mainWindow.image1.Source = new BitmapImage(new Uri(open.FileName));
+
                 }
                 catch (Exception ex)
                 {

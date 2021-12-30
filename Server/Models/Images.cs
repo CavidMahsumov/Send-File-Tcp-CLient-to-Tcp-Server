@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Server.Models
 {
-    public class PDF
+    public class Images
     {
         public string SenderName { get; set; }
-        public  string ImagePath { get; set; }
-        public string PdfPath { get; set; }
+        public string ImagePath { get; set; }
+       
     }
 }

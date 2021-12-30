@@ -1,6 +1,7 @@
 ﻿using SendFileClientToServerWithTCP.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,5 +27,7 @@ namespace SendFileClientToServerWithTCP
             InitializeComponent();
             this.DataContext = new MainWindowViewModel(this);
         }
+
+       
     }
 }

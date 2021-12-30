@@ -9,20 +9,93 @@
     <Grid Background="DarkOliveGreen" >
         <StackPanel>
             <Button Command="{Binding ConnectBtnCLick}" Width="300" Height="70" Content="Connect"></Button>
-            <ListBox  Name="Listbox"   Height="378" >
+            <WrapPanel>
+                <ListBox BorderThickness="0" Width="420"  Name="Listbox" Grid.Column="1"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="378" SelectedItem="{Binding SelectedItemPdf}" >
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel>
-                            <TextBlock Text="{Binding Text}"></TextBlock>
-                            <TextBlock Text="{Binding SenderName}"></TextBlock>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10*"></RowDefinition>
+                                    <RowDefinition Height="4*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" x:Name="border1" Width="200" Height="250" Background="Transparent" BorderBrush="Red" BorderThickness="5" Margin="5,25,5,5">
 
-                        </WrapPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10*"></RowDefinition>
+                                            <RowDefinition Height="3*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" >
+                                            <Image x:Name="Image" Width="150" Height="150" Margin="0,8,0,0"  Source="{Binding ImagePath}"></Image>
+                                            <Label Width="200" Height="5" Background="Red" Margin="0,4,0,0"></Label>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Orientation="Vertical" >
+                                            <TextBlock x:Name="ProductNameText" Text="{Binding SenderName}" FontSize="14" Foreground="Black" FontWeight="Bold" Width="180" Height="20" Margin="5,3,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                                            <TextBlock  x:Name="ProductPriceText" Text="{Binding PdfPath}" FontSize="14" Foreground="Black" FontWeight="Bold" Width="180" Height="20" Margin="5,3,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                                        </StackPanel>
+                                        <WrapPanel  Grid.Row="1">
 
-            </ListBox>
 
+                                        </WrapPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+                <ListBox BorderThickness="0" SelectedItem="{Binding SelectedItemImg}" Width="420"  Name="ListboxImg" Grid.Column="1"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="378"  >
+
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10*"></RowDefinition>
+                                    <RowDefinition Height="4*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" x:Name="border1" Width="200" Height="250" Background="Transparent" BorderBrush="Red" BorderThickness="5" Margin="5,25,5,5">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10*"></RowDefinition>
+                                            <RowDefinition Height="3*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" >
+                                            <Image x:Name="Image" Width="150" Height="150" Margin="0,8,0,0"  Source="{Binding ImagePath}"></Image>
+                                            <Label Width="200" Height="5" Background="Red" Margin="0,4,0,0"></Label>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Orientation="Vertical" >
+                                            <TextBlock x:Name="ProductNameText" Text="{Binding SenderName}" FontSize="14" Foreground="Black" FontWeight="Bold" Width="180" Height="20" Margin="5,3,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                                            <TextBlock  x:Name="ProductPriceText" Text="{Binding ImagePath}" FontSize="14" Foreground="Black" FontWeight="Bold" Width="180" Height="20" Margin="5,3,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                                        </StackPanel>
+                                        <WrapPanel  Grid.Row="1">
+
+
+                                        </WrapPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+
+            </WrapPanel>
+        
+            <Button Command="{Binding OpenBtnCommand}" Name="openbtn" Width="300" Height="50">Open File</Button>
         </StackPanel>
         
     </Grid>
